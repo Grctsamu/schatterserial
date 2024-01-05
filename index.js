@@ -20,14 +20,13 @@ function scanAndConnectAll() {
   SerialPort.list().then((ports) => {
     if (ports.length === 0) {
       console.log('No se encontraron puertos disponibles. Volviendo a escanear en 3 segundos...');
-      setTimeout(scanAndConnectAll, 3000); // Vuelve a escanear después de 3 segundos
+      
       return;
     }
 
     ports.forEach((portInfo) => {
       var pathx = portInfo.path; // Manejar si la propiedad path no está presente
-      console.log(portInfo);
-      console.log("Path: " + pathx)
+      
       if (!pathx) {
         console.error('Error: No se pudo determinar el path del puerto.');
         return;
@@ -56,6 +55,7 @@ function scanAndConnectAll() {
 
 // Llamar a la función para escanear y conectar a todos los puertos
 scanAndConnectAll();
+setInterval(scanAndConnectAll, 5000);
 
 socket.on('serial', function (datax) {
   if (connected) {
