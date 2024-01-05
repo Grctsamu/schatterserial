@@ -6,14 +6,16 @@ curl https://raw.githubusercontent.com/samu63cs/schatterserial/main/index.js >> 
 npm i serialport
 npm i socket.io-client
 
-read -p "Add SchatterSerial to Crontab? (yes/no): " respuesta
+read -p "Do you want to add SchatterSerial to the crontab? (yes/no): " respuesta
 
-if [ "$respuesta" == "yes" ]; then
-    # Lógica para añadir el programa a la crontab
-    echo "@reboot node $(pwd)/SchatterSerial/index.js" | crontab -
+if [[ "$respuesta" =~ ^[Yy][Ee][Ss]$ ]]; then
+    # Logic to add the program to the crontab
+    (crontab -l ; echo "@reboot node $(pwd)/SchatterSerial/index.js") | crontab -
     echo "Added to crontab"
 else
-    echo " "
+    echo "Operation canceled."
 fi
+
+
 
 echo "Done!"
