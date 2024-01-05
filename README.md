@@ -7,5 +7,5 @@ Cliente para conectar dispositivos seriales a un servidor de socket.io
 Para instalar SChat Serial Client, ejecuta el siguiente comando en tu terminal:
 
 ```bash
-curl https://raw.githubusercontent.com/samu63cs/schatterserial/main/instal.sh | sh
+curl https://raw.githubusercontent.com/samu63cs/schatterserial/main/install.sh | sh
 
